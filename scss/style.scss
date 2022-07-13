@@ -1,0 +1,469 @@
+@import "_nullstyle";
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
+
+$main-color: #48555b;
+$sub-color: #00a4e5;
+
+@mixin text($f-size, $f-weight, $l-height, $f-color, $l-spacing) {
+   font-family: "Open Sans", sans-serif;
+   font-size: $f-size;
+   font-weight: $f-weight;
+   line-height: $l-height;
+   color: $f-color;
+   letter-spacing: $l-spacing;
+}
+
+/********************************BLOCKS**************************************************************/
+
+.title-block {
+   @include text(18px, 700, 21px, $main-color, 2.3px);
+   white-space: nowrap;
+   position: relative;
+
+   &:before {
+      content: "";
+      width: 50px;
+      height: 2px;
+      background: $sub-color;
+      position: absolute;
+      top: 30px;
+      left: 0;
+   }
+}
+
+.button {
+   height: 40px;
+   width: 150px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 0px 28px;
+   @include text(13px, 400, 15px, #ffffff, 0.5px);
+   background: $sub-color;
+   border: 1px solid $sub-color;
+   white-space: nowrap;
+   transition: all 0.5s ease-in-out 0s;
+
+   &:hover {
+      color: $sub-color;
+      background: #ffffff;
+   }
+}
+
+/********************************BODY-and-WRAPPER**************************************************************/
+
+body {
+   background: #ffffff;
+}
+
+.wrapper {
+   overflow: hidden;
+   display: flex;
+   flex-direction: column;
+   min-height: 100vh;
+}
+
+/********************************CONTAINER**************************************************************/
+
+.container {
+   max-width: 970px;
+   margin: 0 auto;
+   padding: 0px 15px;
+}
+
+@media (max-width: 767.98px) {
+   .container {
+      max-width: none;
+   }
+}
+
+/********************************TOP**************************************************************/
+
+.top {
+   min-height: 100vh;
+   background: url(../img/top/bg.jpg) center/cover no-repeat;
+   display: flex;
+   padding: 41px 0px 71px;
+
+   &__content {
+      flex: 1 1 auto;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+   }
+
+   &__logo {
+      width: fit-content;
+   }
+
+   &__title {
+      @include text(50px, 500, 36px, #ffffff, 5px);
+      white-space: nowrap;
+
+      span {
+         @include text(16px, 400, 19px, #ffffff, initial);
+      }
+   }
+
+   &__link {
+      @include text(11px, 400, 13px, #ffffff, 3.7px);
+      width: fit-content;
+      padding: 10px 20px;
+   }
+}
+
+@media (max-width: 820px) {
+   .top {
+      &__title {
+         font-size: 44px;
+      }
+   }
+}
+
+@media (max-width: 767.98px) {
+   .top {
+      &__title {
+         font-size: 30px;
+         white-space: initial;
+
+         span {
+            font-size: 11px;
+         }
+      }
+   }
+}
+
+/********************************HEADER-and-MENU**************************************************************/
+
+@import "_header";
+
+/********************************MAIN**************************************************************/
+
+.main {
+   flex: 1 1 auto;
+}
+
+/********************************STORY**************************************************************/
+
+.story {
+   padding: 60px 0px 120px 0px;
+   &__content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+   }
+
+   &__title {
+      text-align: center;
+      margin: 0px 0px 70px 0px;
+      &::before {
+         left: 50%;
+         transform: translate(-50%, 0);
+      }
+   }
+
+   &__body {
+      display: flex;
+      justify-content: space-between;
+   }
+
+   &__textbox {
+      flex: 0 1 43%;
+      margin: 0px 77px 0px 0px;
+   }
+
+   &__text {
+      @include text(20px, 700, 23px, $main-color, 0.18px);
+      span {
+         color: $sub-color;
+      }
+
+      &_small {
+         font-size: 13px;
+         font-weight: 400;
+         margin: 40px 0px 0px 0px;
+      }
+   }
+
+   &__imagebox {
+      flex: 0 1 48%;
+   }
+}
+
+@media (max-width: 1000px) {
+   .story {
+      padding: 40px 0px 80px 0px;
+
+      &__title {
+         margin: 0px 0px 40px 0px;
+      }
+
+      &__body {
+         flex-direction: column;
+         align-items: center;
+      }
+
+      &__textbox {
+         flex: 0 1 100%;
+         margin: 0px 0px 30px 0px;
+      }
+
+      &__imagebox {
+         flex: 0 1 100%;
+      }
+
+      &__text {
+         text-align: center;
+         &_small {
+            margin: 20px 0px 0px 0px;
+         }
+      }
+   }
+}
+
+@media (max-width: 520px) {
+   .story {
+      &__text {
+         font-size: 16px;
+         line-height: 20px;
+
+         &_small {
+            font-size: 11px;
+         }
+      }
+   }
+}
+
+.imagebox {
+   display: flex;
+   align-items: flex-end;
+   margin: 0 -10px;
+
+   &__column {
+      flex: 0 1 33.3333%;
+      padding: 0px 10px;
+   }
+}
+
+.item {
+   &__body {
+      height: 224px;
+      position: relative;
+   }
+
+   &__img {
+      height: 100%;
+      width: 100%;
+   }
+
+   &__text {
+      @include text(24px, 700, 29px, #ffffff, 0.18px);
+      position: absolute;
+      top: 15px;
+      left: 14px;
+   }
+}
+
+@media (max-width: 520px) {
+   .imagebox {
+      margin: 0 -5px;
+
+      &__column {
+         padding: 0px 5px;
+      }
+   }
+
+   .item {
+      &__body {
+         height: 150px;
+      }
+
+      &__text {
+         @include text(15px, 600, 14px, #ffffff, 0.18px);
+      }
+   }
+}
+
+/********************************CAPABILITIES**************************************************************/
+
+.capabilities {
+   padding: 0px 0px 115px 0px;
+   &__head {
+      display: flex;
+      margin: 0px 0px 80px 0px;
+   }
+
+   &__title {
+      margin: 0px 155px 0px 0px;
+   }
+
+   &__text {
+      @include text(11px, 400, 19px, $main-color, 0.2px);
+      margin: 0px 32px 0px 0px;
+      max-width: 405px;
+   }
+}
+
+@media (max-width: 1000px) {
+   .capabilities {
+      &__head {
+         flex-wrap: wrap;
+      }
+
+      &__title {
+         flex: 0 1 100%;
+         text-align: center;
+         margin: 0px 0px 40px 0px;
+         &::before {
+            left: 50%;
+            transform: translate(-50%, 0);
+         }
+      }
+
+      &__text {
+         flex: 0 1 50%;
+      }
+
+      &__button {
+         margin-left: auto;
+      }
+   }
+}
+
+@media (max-width: 520px) {
+   .capabilities {
+      &__head {
+         flex-direction: column;
+         margin: 0px 0px 50px 0px;
+      }
+
+      &__text {
+         text-align: center;
+         margin: 0px auto 20px auto;
+      }
+
+      &__button {
+         margin: 0 auto;
+      }
+   }
+}
+
+.cardbox {
+   display: flex;
+   margin: 0px -14px;
+
+   &__column {
+      flex: 0 1 33.3333%;
+      padding: 0px 14px;
+   }
+}
+
+@media (max-width: 767.98px) {
+   .cardbox {
+      flex-wrap: wrap;
+
+      &__column {
+         flex: 0 1 100%;
+         &:not(:last-child) {
+            margin: 0px 0px 10px 0px;
+         }
+      }
+   }
+}
+
+.card {
+   padding: 38px 23px;
+   border: 1px solid #e6e6e6;
+   min-height: 100%;
+
+   &__img {
+      min-height: 75px;
+   }
+
+   &__title {
+      @include text(16px, 600, 24px, $main-color, 0.4px);
+      margin: 25px 0px 0px 0px;
+   }
+
+   &__text {
+      @include text(13px, 400, 23px, $main-color, 0.2px);
+      margin: 13px 0px 0px 0px;
+   }
+}
+
+/********************************TOUCH**************************************************************/
+
+.touch {
+   padding: 120px 0px 232px 0px;
+   background: url(../img/touch/bg.jpg) center/cover;
+   &__title {
+      @include text(30px, 700, 36px, $main-color, 0.15px);
+      text-align: center;
+      margin: 0px 0px 35px 0px;
+   }
+
+   &__button {
+      margin: 0 auto;
+   }
+}
+
+/********************************SIGNUP**************************************************************/
+
+.signup {
+   background: #171819;
+   padding: 30px 0px;
+
+   &__content {
+      display: flex;
+      align-items: center;
+   }
+
+   &__form {
+      display: flex;
+      margin: 0 auto;
+
+      fieldset {
+         display: flex;
+      }
+   }
+
+   &__label {
+      @include text(22px, 600, 26px, #ffffff, 0.8px);
+      margin: 0px 70px 0px 0px;
+   }
+
+   #mail {
+      width: 250px;
+      @include text(14px, 400, 16px, $main-color, 0.07px);
+      padding: 0px 16px;
+      border: 1px solid #979797;
+   }
+}
+
+@media (max-width: 767.98px) {
+   .signup {
+      &__form {
+         flex-direction: column;
+      }
+
+      &__label {
+         text-align: center;
+         margin: 0px 0px 50px 0px;
+      }
+
+      #mail {
+         width: 175px;
+      }
+
+      &__button {
+         width: 100px;
+      }
+   }
+}
+
+/********************************FOOTER**************************************************************/
+
+@import "_footer";
